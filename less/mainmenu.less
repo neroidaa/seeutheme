@@ -1,0 +1,136 @@
+nav.mainmenu {
+	border-bottom: 5px solid @mainLightColor;
+	background-color: @mainDarkColor;
+	min-height: @menuHeight;
+	text-align: center;
+	ul {
+		min-height: @menuHeight;
+		.centered;
+		.menuFont;
+		font-size: 0.9em;
+		list-style: none;
+		// overflow: hidden;
+		li {
+			.transitionall();
+			float: left;
+			// border-right: 1px solid @mainLightColor;
+			&:last-child {
+				border-right: none;
+			}
+
+			a {
+				line-height: @menuHeight;
+				padding: 0 20px;
+				color: @white;
+				display: block;
+				.uppercase;
+			}
+
+			&.active {
+				background-color: @mainLightColor;
+				color: @black;
+				a {
+					color: @white;
+					font-weight: bold;
+					&:hover {
+						background-color: @mainLightColor;							
+					}
+				}
+			}
+
+			ul.submenu {
+				.box-shadow(2px 4px 6px 0);
+				font-size: 1em;
+				display: none;
+				background-color: @submenuColor;
+				border: 1px solid #ddd;
+				border-right: none;
+				border-bottom: none;
+				position: absolute;
+				width: 200px;
+				height: auto;
+				padding: 0;
+				z-index: 999;
+				text-align: left;
+				li {
+					width: 200px;
+					float: none;
+					border-bottom: 1px solid #ddd;
+					border-right: none;
+					a {
+						line-height: 20px;
+						text-transform: none;
+						padding: 9px 24px;
+					}
+				}
+			}
+
+			&:hover {
+				a {
+					text-decoration: none;
+					color: @black;
+					background-color: @submenuColor;
+				}
+				ul.submenu {
+					display: block;
+					li {
+						&:hover {								
+							a {
+								color: @white;
+								background-color: @mainDarkColor;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#mobile-menu {
+	display: none;
+	visibility: hidden;
+	.bar {
+		display: block;
+		margin-top: 4px;
+		background-color: lighten(@mainLightColor, 20%);
+		.border-radius(3px);
+		height: 3px;
+	}
+}
+
+@media (max-width: 767px) {
+	#mobile-menu {
+		background: url("images/icon-mobile.png") no-repeat scroll 0 0 transparent;
+		cursor: pointer;
+		display: inline-block;
+		margin: 12px;
+		width: 24px;
+		visibility: visible;
+	}
+	nav.mainmenu {
+		div.mainmenu-inner {
+			clear: both;
+			display: none;
+		}
+		ul {
+			li {
+				float: none;
+				&:hover {
+					ul.submenu {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	nav.mainmenu {
+		div.mainmenu-inner {
+			display: block !important;
+		}
+	}
+}
+

@@ -1,0 +1,189 @@
+@featureHeight: 368px;
+
+.features {
+	width: 100%;
+	max-width: 2000px;
+	height: @featureHeight;
+	.feature-nav {
+		z-index: 100;
+		position: absolute;
+		height: @featureHeight;
+		width: 70px;
+		vertical-align: middle;
+		text-align: center;
+		span {
+			width: 30px;
+			height: 30px;
+			display: block;
+			margin: (@featureHeight / 2 - 15) 0 0 20px;
+		}
+		&.prev {
+			left: 0;
+			&:hover {
+				.horizontal-gradient(rgba(0, 0, 0, 0.5) 0%,transparent 100%);
+				span {
+					background: url(../img/arrows.png) 0 0 no-repeat;
+				}
+			}
+		}
+		&.next {
+			right: 0;
+			&:hover {
+				.horizontal-gradient(transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+				span {
+					background: url(../img/arrows.png) 100% 0 no-repeat;
+				}
+			}
+		}
+	}
+	.dots {
+		&.bottom-over {
+			z-index: 100;
+			position: absolute;
+			margin: (@featureHeight - 30) auto 0 auto;
+			text-align: center;
+			width: 100%;			
+		}
+		a {
+			background-color: @mainLightColor;
+			border: 1px solid @white;
+			.opacity(0.7);
+			width: 8px;
+			height: 8px;
+			&.active {
+				background-color: @mainDarkColor;
+			}
+			&:hover {
+				.opacity(1.0);
+			}
+			display: inline-block;
+			vertical-align: middle;
+			zoom: 1;
+			margin: 4px;
+			*display: inline;
+		}
+	}
+	// background: #EDEDED;
+
+	// background-color: @mainLightColor;	
+	.slides {
+		.centered;
+		width: 100%;
+		// .box-shadow(0 0 10px 0, 70%);
+		.slide {
+			width: 100%;
+			height: @featureHeight;
+			position: absolute;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+			background-size: cover;
+			z-index: 85;
+			opacity: 0.0;
+			overflow: hidden;		
+			&.active {
+				z-index: 95;
+				// opacity: 1.0;
+			}
+			&.last-active {
+				z-index: 90;
+				// opacity: 1.0;
+			}
+
+			a.click {
+				.opacity(0.9);
+				position: absolute;
+				display: block;
+				width: 45%;
+				left: -1000px;
+				bottom: 60px;
+				padding: 0;
+				text-decoration: none;
+				z-index: 100;
+				// .transitionall();
+				h3 {					
+					background-color: @mainDarkColor;
+					color: @white;
+					margin: 0 0 2px 0;
+					padding: 8px 20px;
+					display: inline-block;
+					*display: block;
+				}
+				p {
+					background-color: lighten(@mainLightColor, 40%);
+					color: @black;
+					padding: 8px 20px;
+					margin: 0 20% 0 0;
+					font-size: 0.9em;
+				}
+				&:hover {
+					h3 {
+						background-color: lighten(@mainDarkColor, 10%);
+					}
+				}
+			}
+		}
+		img {
+			width: 100%;			
+		}
+	}
+}
+
+@media (max-width: 767px) {	
+	.features {
+		height: 250px;
+		.feature-nav {
+			height: 250px;
+		}
+		.dots {
+			&.bottom-over {
+				margin: 220px auto 0 auto;
+			}
+		}
+		.slides {
+			.slide {
+				height: 250px;
+			}
+		}
+	}
+}
+
+@media (max-width: 480px) {	
+	.features {
+		height: 150px;
+		.feature-nav {
+			height: 150px;
+		}
+		.dots {
+			&.bottom-over {
+				margin: 120px auto 0 auto;
+			}
+		}
+		.slides {
+			.slide {
+				height: 150px;
+				a.click {
+					width: 80%;
+					p {
+						display: none;
+					}
+				}
+			}
+			img {
+				width: 480px;
+			}
+		}
+	}
+}
+
+// /* Large desktop */
+// @media (min-width: 1200px) { }
+ 
+// /* Portrait tablet to landscape and desktop */
+// @media (min-width: 768px) and (max-width: 979px) { }
+ 
+// /* Landscape phone to portrait tablet */
+// @media (max-width: 767px) { }
+ 
+// /* Landscape phones and down */
+// @media (max-width: 480px) { }
+
